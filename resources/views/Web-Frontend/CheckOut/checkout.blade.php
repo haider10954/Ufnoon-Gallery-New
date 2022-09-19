@@ -9,7 +9,7 @@
     <div class="ws-overlay">
         <div class="ws-parallax-caption">
             <div class="ws-parallax-holder">
-                <h1>Check Out</h1>
+                <h1>-{{ __('translation.Checkout') }}-</h1>
             </div>
         </div>
     </div>
@@ -25,16 +25,16 @@
         <div class="ws-checkout-coupon clearfix">
             <div class="col-sm-12">
                 <div class="coupon-info">
-                    <p>Have a coupon? <a data-toggle="collapse" href="#coupon-collapse"> Click here to enter your code</a></p>
+                    <p>{{ __('translation.Have A Coupon') }} <a data-toggle="collapse" href="#coupon-collapse"> {{ __('translation.Click') }}</a></p>
                 </div>
                 <div class="collapse" id="coupon-collapse">
                     <!-- Coupon -->
                     <div class="ws-checkout-coupon-code">
                         <form class="form-inline">
-                            <p><input type="text" placeholder="Coupon code"></p>
+                            <p><input type="text" placeholder="{{ __('translation.Coupon_Used')}}"></p>
                             <br>
                             <!-- Button -->
-                            <a class="btn ws-btn-fullwidth">Apply Coupon</a>
+                            <a class="btn ws-btn-fullwidth">{{ __('translation.Apply Coupon') }}</a>
                         </form>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
 
                 <!-- Billing Details -->
                 <div class="ws-checkout-billing">
-                    <h3>Billing Details</h3>
+                    <h3>{{ __('translation.Billing Date') }}</h3>
 
                     <!-- Form Inputs -->
                     <form class="form-inline">
@@ -56,45 +56,45 @@
                         <!-- Name -->
                         <div class="ws-checkout-first-row">
                             <div class="col-no-p ws-checkout-input col-sm-6">
-                                <label>First Name <span> * </span></label><br>
+                                <label>{{ __('translation.First Name') }} <span> * </span></label><br>
                                 <input type="text">
                             </div>
 
                             <div class="col-no-p ws-checkout-input col-sm-6">
-                                <label>Last Name <span> * </span></label><br>
+                                <label>{{ __('translation.Last Name')}}<span> * </span></label><br>
                                 <input type="text">
                             </div>
                         </div>
 
                         <!-- Company -->
                         <div class="col-no-p ws-checkout-input col-sm-12">
-                            <label>Company Name <span> * </span></label><br>
+                            <label>{{ __('translation.Company_name')}}<span> * </span></label><br>
                             <input type="text">
                         </div>
 
                         <!-- Email -->
                         <div class="ws-checkout-first-row">
                             <div class="col-no-p ws-checkout-input col-sm-6">
-                                <label>Email Adress <span> * </span></label><br>
+                                <label>{{ __('translation.Email') }}<span> * </span></label><br>
                                 <input type="email" placeholder="yourmail@gmail.com">
                             </div>
 
                             <div class="col-no-p ws-checkout-input col-sm-6">
-                                <label>Phone <span> * </span></label><br>
+                                <label>{{ __('translation.Mobile Number')}}<span> * </span></label><br>
                                 <input type="tel">
                             </div>
                         </div>
 
                         <!-- Country -->
                         <div class="col-no-p ws-checkout-input col-sm-12">
-                            <label>Country <span> * </span></label><br>
-                            <input type="text" placeholder="United States">
+                            <label>{{ __('translation.Country') }} <span> * </span></label><br>
+                            <input type="text" placeholder=" {{ __('translation.Country') }} ">
                         </div>
 
                         <!-- Adress -->
                         <div class="col-no-p ws-checkout-input col-sm-12">
-                            <label>Adress <span> * </span></label><br>
-                            <input type="text" placeholder="Street adresss">
+                            <label>{{ __('translation.Address') }} <span> * </span></label><br>
+                            <input type="text" placeholder="{{ __('translation.Address') }}">
                         </div>
 
                         <div class="col-no-p ws-checkout-input col-sm-12">
@@ -103,27 +103,27 @@
 
                         <!-- Town -->
                         <div class="col-no-p ws-checkout-input col-sm-12">
-                            <label>Town / City <span> * </span></label><br>
-                            <input type="text" placeholder="Town / City">
+                            <label>{{ __('translation.City/Town') }} <span> * </span></label><br>
+                            <input type="text" placeholder="{{ __('translation.City/Town') }}">
                         </div>
 
                         <!-- State -->
                         <div class="ws-checkout-first-row">
                             <div class="col-no-p ws-checkout-input col-sm-6">
-                                <label>State / Country <span> * </span></label><br>
+                                <label>{{ __('translation.State / Country') }} <span> * </span></label><br>
                                 <input type="text">
                             </div>
 
                             <div class="col-no-p ws-checkout-input col-sm-6">
-                                <label>Postcode / ZIP <span> * </span></label><br>
-                                <input type="text" placeholder="Postcode / ZIP">
+                                <label>{{ __('translation.Postcode/Zip') }} <span> * </span></label><br>
+                                <input type="text" placeholder="{{ __('translation.Postcode/Zip') }}">
                             </div>
                         </div>
 
                         <!-- Order Notes -->
                         <div class="col-no-p ws-checkout-input col-sm-12">
-                            <label>Order Notes</label><br>
-                            <textarea placeholder="Notes about your order, e.g. special notes for delivery." rows="2" cols="5"></textarea>
+                            <label>{{ __('translation.Order Notes') }}</label><br>
+                            <textarea placeholder="{{ __('translation.Note about Your Order')}}" rows="2" cols="5"></textarea>
                         </div>
                     </form>
 
@@ -133,7 +133,7 @@
             <!-- Cart Total -->
             <div class="col-sm-5">
                 <div class="ws-checkout-order">
-                    <h2>Your Oder</h2>
+                    <h2>{{ __('translation.Your Order')}}</h2>
 
                     <!-- Order Table -->
                     <table>
@@ -141,63 +141,63 @@
                         <!-- Title -->
                         <thead>
                             <tr>
-                                <th class="ws-order-product">Product</th>
-                                <th class="ws-order-total">Total</th>
+                                <th class="ws-order-product {{ (\Session::get('direction') == 'rtl' )? 'text_right' : '' }}">{{ __('translation.Product') }}</th>
+                                <th class="ws-order-total">{{ __('translation.Total') }}</th>
                             </tr>
                         </thead>
 
                         <!-- Products -->
                         <tbody>
                             <tr>
-                                <th>Arkose Factor x 1</th>
-                                <td><span>$64.00</span></td>
+                                <th class="{{ (\Session::get('direction') == 'rtl' )? 'text_right' : '' }}">1 x {{ __('translation.Name') }} </th>
+                                <td><span>64 {{ __('translation.SAR')}}</span></td>
                             </tr>
 
                             <tr>
-                                <th>Pinning Moon x 1</th>
-                                <td><span>$20.00</span></td>
+                                <th class="{{ (\Session::get('direction') == 'rtl' )? 'text_right' : '' }}">1 x {{ __('translation.Name') }}</th>
+                                <td><span>200 {{ __('translation.SAR')}}</span></td>
                             </tr>
 
                             <tr>
-                                <th>Interstellar x 1</th>
-                                <td><span>$20.00</span></td>
+                                <th class="{{ (\Session::get('direction') == 'rtl' )? 'text_right' : '' }}">1 x {{ __('translation.Name') }}</th>
+                                <td><span>200 {{ __('translation.SAR')}}</span></td>
                             </tr>
                             <tr>
-                                <th>Subtotal</th>
-                                <td><span>$104.00</span></td>
+                                <th class="{{ (\Session::get('direction') == 'rtl' )? 'text_right' : '' }}">1 x {{ __('translation.Name') }}</th>
+                                <td><span>100 {{ __('translation.SAR')}}</span></td>
                             </tr>
                         </tbody>
 
                         <!-- Shipping -->
                         <tfoot class="ws-checkout-shipping">
                             <tr>
-                                <th>Shipping</th>
+                                <th class="{{ (\Session::get('direction') == 'rtl' )? 'text_right' : '' }}">{{ __('translation.Shipping') }}</th>
                                 <td>
-                                    <div class="radio">
-                                        <label><input type="radio" name="optradio">International Courier: <span>$35.00</span></label>
+                                    <div class="d-flex align-items-center">
+                                        <input class="{{ (\Session::get('direction') == 'rtl' )? 'radio_btn' : '' }}" type="radio" name="optradio"><span>{{ __('translation.International Courier') }}</span> <span>350 {{ __('translation.SAR')}}</span>
                                     </div>
 
-                                    <div class="radio">
-                                        <label><input type="radio" name="optradio">International Express Courier: <span>$228.00</span></label>
+                                    <div class="d-flex align-items-center">
+                                        <input class="{{ (\Session::get('direction') == 'rtl' )? 'radio_btn' : '' }}" type="radio" name="optradio">{{ __('translation.International Express') }} <span>228 {{ __('translation.SAR') }} </span>
                                     </div>
                                 </td>
                             </tr>
                             <tr class="ws-shipping-total">
-                                <th>Total</th>
-                                <td><span>$139.00</span></td>
+                                <th class="{{ (\Session::get('direction') == 'rtl' )? 'text_right' : '' }}">{{ __('translation.Total') }}</th>
+                                <td><span>139 {{ __('translation.SAR')}}</span></td>
                             </tr>
                         </tfoot>
                     </table>
 
                     <!-- Payment Metod -->
                     <div class="ws-shipping-payment">
-                        <div class="radio">
-                            <label><input type="radio" name="optradio" checked>Paypal</label>
+                        <div class="d-flex align-items-center">
+                            <input class="{{ (\Session::get('direction') == 'rtl' )? 'radio_btn' : '' }}" type="radio" name="optradio" checked>Paypal
                             <img src="{{ asset('web-assets/img/paypal.png') }}" class="img-responsive" alt="PayPal Acceptance Mark">
                         </div>
-                        <p>Pay via PayPal, you can pay with your credit card if you don’t have a PayPal account.</p>
+                        <p>{{ __('translation.Paypal')}}</p>
                     </div>
-                    <a class="btn ws-btn-fullwidth">Proceed to PayPal</a>
+                    <a class="btn ws-btn-fullwidth">{{ __('translation.Proceed to Paypal') }}</a>
                 </div>
             </div>
 

@@ -787,7 +787,10 @@ h3.ws-item-title{
 	line-height: 60px;	
 	letter-spacing: 2px;
 	text-transform: uppercase;
-	 
+}
+
+.ws-item-sale span i{
+	font-size: 16px;
 }
 
 /*--------------------------------------
@@ -1128,10 +1131,11 @@ table .img-responsive{
 	font-weight: 600;
 	letter-spacing: 2px;	
 	border-bottom: 1px solid #f2f2f2 !important;
+	text-align: center;
 }
 .ws-mycart-content .cart-item-remove{
 	width: 100px;
-	text-align: right;
+	text-align: center;
 }
 .ws-mycart-content .cart-item-remove a{
 	color: #999;
@@ -1329,7 +1333,7 @@ table .img-responsive{
 .ws-checkout-billing label{
     padding: 0 0 7px 0;
     margin: 0;
-    font-size: 12px;
+    font-size: 12px !important;
     text-transform: uppercase;
     letter-spacing: 1.5px;
 	font-size: 16px;
@@ -1667,7 +1671,7 @@ tfoot.ws-checkout-shipping tr.ws-shipping-total td{
 	color: #C2A476;
 }
 .ws-contact-offices{
-	padding-top: 70px;
+	padding-top: 0px;
 }
 .ws-contact-offices h2{
 	font-size: 24px;

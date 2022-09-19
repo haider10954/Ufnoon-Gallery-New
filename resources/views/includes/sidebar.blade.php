@@ -97,29 +97,29 @@
                     </a>
                 </li>
 
-                <li>
-                    <a  class="has-arrow">
-                        <i class="dripicons-map"></i>
-                        <span>Shipping Location</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('shipping_location')}}">Shipping location</a></li>
-                        <li><a href="{{ route('shipping_hub')}}">Hub</a></li>
-                        <li><a href="{{ route('shipping_city')}}">Cities</a></li>
-                    </ul>
-                </li>
+                <!--<li>-->
+                <!--    <a  class="has-arrow">-->
+                <!--        <i class="dripicons-map"></i>-->
+                <!--        <span>Shipping Location</span>-->
+                <!--    </a>-->
+                <!--    <ul class="sub-menu" aria-expanded="false">-->
+                <!--        <li><a href="{{ route('shipping_location')}}">Shipping location</a></li>-->
+                <!--        <li><a href="{{ route('shipping_hub')}}">Hub</a></li>-->
+                <!--        <li><a href="{{ route('shipping_city')}}">Cities</a></li>-->
+                <!--    </ul>-->
+                <!--</li>-->
 
-                <li>
-                    <a  class="has-arrow waves-effect">
-                        <i class="dripicons-archive"></i>
-                        <span>User Email</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('bulk_emails')}}">Bulk Email</a></li>
-                        <li><a href="{{ route('all-contacts')}}">Contact Us</a></li>
-                        <li><a href="{{ route('subscribers')}}">Subscribers</a></li>
-                    </ul>
-                </li>
+                <!--<li>-->
+                <!--    <a  class="has-arrow waves-effect">-->
+                <!--        <i class="dripicons-archive"></i>-->
+                <!--        <span>User Email</span>-->
+                <!--    </a>-->
+                <!--    <ul class="sub-menu" aria-expanded="false">-->
+                <!--        <li><a href="{{ route('bulk_emails')}}">Bulk Email</a></li>-->
+                <!--        <li><a href="{{ route('all-contacts')}}">Contact Us</a></li>-->
+                <!--        <li><a href="{{ route('subscribers')}}">Subscribers</a></li>-->
+                <!--    </ul>-->
+                <!--</li>-->
 
 
                 <li>
@@ -139,13 +139,15 @@
                         <li><a href="{{ route('notification_master')}}">Notification Master</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="{{ route('page_setting')}}">
-                        <i class="dripicons-network-1"></i>
-                        <span>Page Setting</span>
-                    </a>
-                </li>
-
+            
+                <!--<li>-->
+                <!--    <a href="{{ route('page_setting')}}">-->
+                <!--        <i class="dripicons-network-1"></i>-->
+                <!--        <span>Page Setting</span>-->
+                <!--    </a>-->
+                <!--</li>-->
+                
+            
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="dripicons-network-1"></i>

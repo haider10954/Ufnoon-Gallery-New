@@ -1,6 +1,15 @@
 <?php
 
+// use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ArtistController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Models\cities;
+use App\Models\Artist;
+use App\Models\LikeArtist;
+use App\Models\countries;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +21,39 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/web/user/profile', function () {
+        $city=cities::get();
+        $count=countries::get();
+        return view('Web-Frontend.User Profile.user_profile',compact('city'),compact('count'));
+    })->name('user-profile');
+    Route::get('/ufnoon/user/liked-artworks', function () {
+        return view('Web-Frontend.User Profile.liked_artwork');
+    })->name('user-liked-artwork');
+
+    Route::get('/ufnoon/user/liked-artist', function () {
+        $likedWork=auth()->user()->getLikedArtist;
+        return view('Web-Frontend.User Profile.liked_artist',compact('likedWork'));
+    })->name('user-liked-artist');
+
+
+    Route::get('/ufnoon/user/orders', function () {
+        return view('Web-Frontend.User Profile.user_order');
+    })->name('user-orders');
+
+
+    Route::post('/update', [CustomerController::class, 'update'])->name('update');
+
+    Route::post('/update_password', [CustomerController::class, 'update_password'])->name('update_password');
+    Route::post('/update_delivery', [CustomerController::class, 'update_delivery'])->name('update_delivery');
+    Route::get('/logout', [CustomerController::class, 'logout'])->name('logout');
+    Route::post('/likeartist', [ArtistController::class, 'likeartist'])->name('likeartist');
+    Route::post('/dislikedartist', [ArtistController::class, 'dislikedartist'])->name('dislikedartist');
+
+
+});
+Route::post('/registaration', [CustomerController::class, 'registaration'])->name('registaration');
+Route::post('/verification', [CustomerController::class, 'verification'])->name('verification');
 //Error
 Route::get('/*', function () {
     return view('Error_Page.404');
@@ -25,16 +67,18 @@ Route::get('/', function () {
     return view('Login.login');
 })->name('login');
 
+
 //Register
 Route::get('/register', function () {
     return view('Register.register');
 })->name('register');
 
-
 //Dashboard
+
 Route::get('/admin/dashboard', function () {
     return view('Dashboard.dashboard');
 })->name('dashboard');
+
 Route::get('/admin/artist/edit/edit-artist', function () {
     return view('Dashboard.Edit.pages.edit_artist');
 })->name('edit_artist_page');
@@ -359,11 +403,208 @@ Route::get('/admin/admin/settings/shipping-info', function () {
     return view('Settings.Shipping-info.shipping');
 })->name('shipping_info');
 
+
+
+
 //WEBSITE ROUTES
-Route::get('/web/ufnoon',function(){
-return view('Web-Frontend.Home.home');
+Route::get('/web/ufnoon', function () {
+    return view('Web-Frontend.Home.home');
 })->name('web-home');
 
-Route::get('/web/login',function(){
-return view('Web-Frontend.Login.login');
+Route::get('/web/login', function () {
+    return view('Web-Frontend.Login.login');
 })->name('web-login');
+
+Route::get('/web/artist/apply-now', function () {
+    return view('Web-Frontend.Register.artist_register');
+})->name('web-artist-register');
+
+Route::get('/web/user/apply-now', function () {
+    return view('Web-Frontend.Register.user_register');
+})->name('web-user-register');
+
+
+
+
+Route::get('/web/artist/profile', function () {
+    return view('Web-Frontend.Artist Profile.artist_profile');
+})->name('artist-profile');
+
+Route::get('/web/artist/my_profile', function () {
+    return view('Web-Frontend.Artist Profile.Pages.profile');
+})->name('artist-my-profile');
+
+Route::get('/web/artist/artwork-listing', function () {
+    return view('Web-Frontend.Artist Profile.Pages.artworks');
+})->name('artist_artworks');
+Route::get('/web/artist/artwork-listing/add', function () {
+    return view('Web-Frontend.Artist Profile.Pages.Add-Artwork.add_artworks');
+})->name('add_artist_artworks');
+
+Route::get('/web/artist/exhibitions-listing', function () {
+    return view('Web-Frontend.Artist Profile.Pages.exhibition');
+})->name('exhibition_artworks');
+
+Route::get('/web/artist/exhibition-listing/add', function () {
+    return view('Web-Frontend.Artist Profile.Pages.Add-Exhibition.add_exhibition');
+})->name('add_exhibition_artworks');
+
+Route::get('/web/artist/orders', function () {
+    return view('Web-Frontend.Artist Profile.Pages.order');
+})->name('artist-orders');
+
+Route::get('/web/artist/subscription-history', function () {
+    return view('Web-Frontend.Artist Profile.Pages.subscription');
+})->name('artist-subscription-history');
+
+Route::get('/web/artist/subscription-listings', function () {
+    return view('Web-Frontend.Artist Profile.Pages.subscription_history');
+})->name('artist-subscription');
+
+Route::get('/web/artist/change-password', function () {
+    return view('Web-Frontend.Artist Profile.Pages.change_password');
+})->name('artist-change-password');
+
+Route::get('/web/artist/support', function () {
+    return view('Web-Frontend.Artist Profile.Pages.support');
+})->name('artist-support');
+
+Route::get('/web/artist/registration-process', function () {
+    return view('Web-Frontend.Artist Profile.Apply-Process.process');
+})->name('artist-register-process');
+
+
+
+
+
+
+Route::get('/web/ufnoon/shops', function () {
+    return view('Web-Frontend.Shops.shops');
+})->name('web-shops');
+
+Route::get('/ufnoon/artist/feature-artists', function () {
+    $artist=Artist::with('getCategory','getlikes')->get();
+    // $liked=LikeArtist::where('iUserId',auth()->user()->id)->get();
+    return view('Web-Frontend.Artists.Feature-Artists.feature_artist',compact('artist'));
+})->name('web-feature-artist');
+
+Route::get('/web/faqs', function () {
+    return view('Web-Frontend.Faqs.faqs');
+})->name('web-faqs');
+
+
+Route::get('/web/artwork', function () {
+    return view('Web-Frontend.ArtWorks.artwork');
+})->name('web-artwork');
+
+
+Route::get('/web/cart', function () {
+    return view('Web-Frontend.Cart.cart');
+})->name('web-cart');
+
+Route::get('/web/cart/checkout', function () {
+    return view('Web-Frontend.CheckOut.checkout');
+})->name('web-cart-checkout');
+
+Route::get('set/language/{lang}/{direction}', function ($lang, $direction) {
+    session()->put('lang', $lang);
+    session()->put('direction', $direction);
+    return redirect()->back();
+})->name('set_language');
+
+Route::get('/web/artist/featured-artist/artist-name', function () {
+    return view('Web-Frontend.Artists.Single Artist.artist');
+})->name('single-artist');
+
+Route::get('/web/ufnoon/shops/paintings', function () {
+    return view('Web-Frontend.Shops.Paintings.painting');
+})->name('web-painting');
+
+
+Route::get('/web/ufnoon/contact-us', function () {
+    return view('Web-Frontend.Contact.contact');
+})->name('web-contact-us');
+
+Route::get('/ufnoon/shops/sculptures', function () {
+    return view('Web-Frontend.Shops.Sculpture.sculpture');
+})->name('web-sculptures');
+
+Route::get('/ufnoon/shops/photography', function () {
+    return view('Web-Frontend.Shops.Photography.photography');
+})->name('web-photography');
+
+
+Route::get('/ufnoon/pages/term-and-condition', function () {
+    return view('Web-Frontend.Pages.Terms_condition');
+})->name('web-terms_and_condition');
+
+Route::get('/ufnoon/pages/our-story', function () {
+    return view('Web-Frontend.Pages.our_story');
+})->name('web-our_story');
+
+Route::get('/ufnoon/pages/values-and-services', function () {
+    return view('Web-Frontend.Pages.values');
+})->name('web-values');
+
+Route::get('/ufnoon/pages/guidelines', function () {
+    return view('Web-Frontend.Pages.guidelines');
+})->name('web-guidelines');
+
+Route::get('/ufnoon/pages/advantages', function () {
+    return view('Web-Frontend.Pages.advantages');
+})->name('web-advantages');
+
+
+// Artist Portal
+Route::get('/ufnoon/artist/dashboard', function () {
+    return view('Artist-Portal.Dashboard.dashboard');
+})->name('artist-portal-dashboard');
+
+Route::get('/ufnoon/artist/dashboard/profile', function () {
+    return view('Artist-Portal.Profile.artist_profile');
+})->name('artist-portal-profile');
+
+Route::get('/ufnoon/artist/dashboard/artwork', function () {
+    return view('Artist-Portal.Artwork.artwork');
+})->name('artist-portal-artwork');
+
+Route::get('/ufnoon/artist/dashboard/artwork/add', function () {
+    return view('Artist-Portal.Artwork.Add.add_artwork');
+})->name('artist-portal-add-artwork');
+
+Route::get('/ufnoon/artist/dashboard/exhibition', function () {
+    return view('Artist-Portal.Exhibitions.exhibition');
+})->name('artist-portal-exhibitions');
+
+Route::get('/ufnoon/artist/dashboard/exhibition/add', function () {
+    return view('Artist-Portal.Exhibitions.Add.add_exhibition');
+})->name('artist-portal-add-exhibitions');
+
+Route::get('/ufnoon/artist/dashboard/order', function () {
+    return view('Artist-Portal.Orders.order_history');
+})->name('artist-portal-order');
+
+Route::get('/ufnoon/artist/dashboard/subscription-history', function () {
+    return view('Artist-Portal.Subscription-History.subscription-history');
+})->name('artist-portal-Subscription-History');
+
+Route::get('/ufnoon/artist/dashboard/support', function () {
+    return view('Artist-Portal.Support.support');
+})->name('artist-portal-support');
+
+Route::get('/ufnoon/artist/dashboard/change-password', function () {
+    return view('Artist-Portal.Change-Password.change_password');
+})->name('artist-portal-change-password');
+
+Route::get('/ufnoon/artist/dashboard/upgrade-plan', function () {
+    return view('Artist-Portal.Upgrade.upgrade');
+})->name('artist-portal-upgrade');
+
+
+
+
+// Route::resource('admin', AdminController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

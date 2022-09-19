@@ -25,10 +25,10 @@
                     <div class="card shadow-lg p-3 mb-5 bg-white roundedshadow-lg p-3 mb-5 bg-white rounded">
                         <div class="card-body">
 
-                            <div class="d-flex p-3">
+                            <div class="d-flex align-items-center p-2">
                                 <div>
                                     <a class="">
-                                        <img src="{{ asset('assets/images/logo.png') }}" alt="" height="32">
+                                        <img src="{{ asset('assets/images/Logo-dark.png') }}" alt="" height="40">
                                         <!-- <img src="{{ asset('assets/images/users/avatar.jpg') }}" alt="" height="22"> -->
                                     </a>
                                 </div>
@@ -81,7 +81,6 @@
                         </div>
                     </div>
                     <div class="mt-5 text-center position-relative">
-                        <p class="text-white-50">Don't have an account ? <a class="fw-bold text-white" href="{{ route('register')}}"> Signup Now </a> </p>
                         <p class="text-white-50"> © <script>
                                 document.write(new Date().getFullYear())
                             </script> Ufnoon Gallery.

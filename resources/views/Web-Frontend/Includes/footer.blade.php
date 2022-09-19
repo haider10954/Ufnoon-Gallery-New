@@ -4,41 +4,41 @@
             <div class="row">
                 <!-- About -->
                 <div class="col-sm-6 ws-footer-col">
-                    <h3>About Us</h3>
+                    <h3>{{ __('translation.About Us') }}</h3>
                     <div class="ws-footer-separator"></div>
-                    <div class="ws-footer-about">
+                    <div class="ws-footer-about {{ (\Session::get('direction') == 'rtl' )? 'footer-rtl' : '' }}">
                         <p>
-                            The ultimate destination for artists to meet unique collectors
+                            {{ __('translation.The ultimate destination for artists to meet unique collectors') }}
                         </p>
                     </div>
                 </div>
 
                 <!-- Support Links -->
                 <div class="col-sm-2 ws-footer-col">
-                    <h3>Company Info</h3>
+                    <h3>{{ __('translation.Company') }}</h3>
                     <div class="ws-footer-separator"></div>
-                    <ul>
-                        <li><a href="#x">Terms and conditions</a></li>
-                        <li><a href="#x">Our Story</a></li>
-                        <li><a href="#x">Values and services</a></li>
-                        <li><a href="{{ route('web-faqs')}}">FAQS</a></li>
-                        <li><a href="#x">Contact Us</a></li>
+                    <ul class="{{ (\Session::get('direction') == 'rtl' )? 'footer-rtl' : '' }}">
+                        <li><a href="{{ route('web-terms_and_condition') }}">{{ __('translation.Terms and conditions') }}</a></li>
+                        <li><a href="{{ route('web-our_story') }}">{{ __('translation.Our Story') }}</a></li>
+                        <li><a href="{{ route('web-values') }}">{{ __('translation.Values and services') }}</a></li>
+                        <li><a href="{{ route('web-faqs')}}">{{ __('translation.Faqs')}}</a></li>
+                        <li><a href="{{ route('web-contact-us')}}">{{ __('translation.Contact') }}</a></li>
                     </ul>
                 </div>
 
                 <!-- Social Links -->
                 <div class="col-sm-2 ws-footer-col">
-                    <h3>Artist</h3>
+                    <h3>{{ __('translation.Artist') }}</h3>
                     <div class="ws-footer-separator"></div>
-                    <ul class="ws-footer-social">
+                    <ul class="ws-footer-social {{ (\Session::get('direction') == 'rtl' )? 'footer-rtl' : '' }}">
                         <li>
-                            <a href="#x" class="btn btn-primary">Artist? Join Us</a>
+                            <a href="{{ route('web-artist-register')}}" >{{ __('translation.Artist Join') }}</a>
                         </li>
                         <li>
-                            <a href="#x">Guidelines</a>
+                            <a href="{{ route('web-guidelines') }}">{{ __('translation.Guidelines') }}</a>
                         </li>
                         <li>
-                            <a href="#x">Advantages</a>
+                            <a href="{{ route('web-advantages') }}">{{ __('translation.Advantages') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -52,7 +52,7 @@
         <div class="container">
             <!-- Copyright -->
             <div class="pull-left">
-                <p>&copy; 2022 Ufnoon Gallery All rights reserved.</p>
+                <p>&copy; {{ __('translation.Copyright') }}.</p>
             </div>
 
             <!-- Payments -->
