@@ -1,0 +1,28 @@
+.py{
+    padding: 120px 0px;
+}
+
+.bg{
+    background-image: url('../../web-assets/img/backgrounds/banner5.jpg');
+    height: auto;
+    width: 100%;
+}
+
+.login_bg{
+    background-image: url('../../web-assets/img/backgrounds/banner5.jpg');
+    background-position: center;
+}
+
+.ART{
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+}
+
+.item-category
+{
+    font-weight: bold;
+    font-size: larger;
+    text-align: center;
+    color: black;
+}
